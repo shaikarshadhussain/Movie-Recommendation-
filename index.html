@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoodStream | Movie Recommendation</title>
+    <meta
+      name="description"
+      content="Pick a mood, get a movie recommendation, and jump to streaming searches in a polished Vercel-hosted MoodStream web experience."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Mood-first movie discovery</p>
+          <h1>MoodStream</h1>
+          <p class="hero-text">
+            A Vercel-ready web version of the movie recommendation project. Choose how you want
+            the night to feel, and MoodStream ranks the strongest matching titles from the catalog.
+          </p>
+          <div class="hero-actions">
+            <button id="surprise-button" class="primary-button" type="button">Surprise Me</button>
+            <a class="secondary-button" href="#algorithm">See Algorithm</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span id="mood-count">0</span>
+              <p>Mood signals</p>
+            </div>
+            <div class="stat-card">
+              <span id="movie-count">0</span>
+              <p>Curated films</p>
+            </div>
+            <div class="stat-card">
+              <span>Rule-based</span>
+              <p>Fast ranking logic</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <p class="panel-label">Top spotlight</p>
+          <div id="spotlight-card" class="spotlight-card" aria-live="polite"></div>
+        </aside>
+      </header>
+
+      <main>
+        <section class="section-block">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Step 1</p>
+              <h2>Choose your mood</h2>
+            </div>
+            <p class="section-note">Each mood triggers the same ranking logic used by the project.</p>
+          </div>
+          <div id="mood-grid" class="mood-grid" aria-label="Mood options"></div>
+        </section>
+
+        <section class="section-block recommendation-layout">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Step 2</p>
+              <h2>Your recommendation stack</h2>
+            </div>
+            <p id="selection-copy" class="section-note">
+              Pick a mood to see the highest-ranked matching movie first.
+            </p>
+          </div>
+
+          <article id="featured-result" class="featured-result" aria-live="polite"></article>
+
+          <div class="list-header">
+            <h3>More matches</h3>
+            <p>The next best titles for the same mood, sorted by score and freshness.</p>
+          </div>
+          <div id="match-list" class="match-list"></div>
+        </section>
+
+        <section id="algorithm" class="section-block algorithm-block">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Behind the scenes</p>
+              <h2>What algorithm is used?</h2>
+            </div>
+          </div>
+
+          <div class="algorithm-grid">
+            <article class="algorithm-card">
+              <h3>Recommendation method</h3>
+              <p>
+                MoodStream uses a rule-based recommendation algorithm, not a trained machine
+                learning model. Each movie has one or more mood tags such as
+                <code>happy</code>, <code>romantic</code>, or <code>intense</code>.
+              </p>
+            </article>
+
+            <article class="algorithm-card">
+              <h3>How ranking works</h3>
+              <p>
+                When you select a mood, the app filters the catalog to movies tagged with that mood,
+                then sorts the results by rating in descending order. If two movies are close, newer
+                releases are preferred, and title order acts as the final tie-breaker.
+              </p>
+            </article>
+
+            <article class="algorithm-card">
+              <h3>Why it feels instant</h3>
+              <p>
+                Because the logic is deterministic and the catalog is curated, the recommendation
+                appears immediately without network-heavy model inference. This makes the project
+                simple to host and easy to explain.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          The original desktop Tkinter experience is still in this repository. This web version was
+          added so the project can be deployed on Vercel.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
